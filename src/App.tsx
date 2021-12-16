@@ -1,20 +1,32 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
+
+const ACTIONS = {
+  INCREMENT: 'increment',
+  DECREMENT: 'decrement'
+}
+function reducer(state: any, action: any) {
+  switch (action.type) {
+    case ACTIONS.INCREMENT: 
+      return { counter: state.counter + 1 }
+    case ACTIONS.DECREMENT: 
+      return { counter: state.counter - 1 }
+    default:
+      return state
+  }
+}
+
+const initialState = { 
+  counter: 0 
+};
 
 function App() {
-  const [count, setCounter] = useState(0)
-
-  function trigger(action: boolean) {
-    console.log(count)
-    action ? setCounter(prevCount => prevCount + 1) : setCounter(prevCount => prevCount - 1)
-    console.log(count)
-  }
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
     <div className="App">
-     <button onClick={() => trigger(true)}>+</button>
-     <h1>{count}</h1>
-     <button onClick={() => trigger(false)}>-</button>
-     
+     <button onClick={() => dispatch({type: ACTIONS.INCREMENT})}>+</button>
+     <h1>{state.counter}</h1>
+     <button onClick={() => dispatch({type: ACTIONS.DECREMENT})}>-</button>
     </div>
   );
 }
