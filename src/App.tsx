@@ -1,12 +1,10 @@
-import Button from "./components/Button";
+import Incrementer from "./components/Incrementer";
 import { ContextProvider } from "./store";
 
 function App() {
   return (
     <ContextProvider>
-      <div className="App">
-        <Button />
-      </div>
+      <Incrementer />
     </ContextProvider>
   );
 }
