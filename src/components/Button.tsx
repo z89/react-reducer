@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { CountContext, ACTIONS } from "./App";
+import { CountContext } from "../context";
+import { ACTIONS } from "../reducer";
 
 export default function Button() {
   const ctx = useContext(CountContext);
