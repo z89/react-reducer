@@ -1,7 +1,6 @@
 import { ReactNode, useReducer } from "react";
-import { CountContext } from "../context";
+import { CountContext, initialState } from "../context";
 import { reducer } from "../reducer";
-import { initialState } from "../context";
 
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
